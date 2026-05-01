@@ -65,13 +65,7 @@ const recuFi = ident("recuFi")
 const recuId = ident("recuId")
 
 //    VALIDER ************
-let temps = new Date();
-             let jour = String(temps.getDate()).padStart(2, "0")
-             let mois = String(temps.getMonth() + 1).padStart(2 ,"0")
-             let annee = String(temps.getFullYear())
-             let heure = String(temps.getHours()).padStart(2 , "0")
-             let minute = String(temps.getMinutes()).padStart(2, "0")
-             let genere = `${jour}/${mois}/${annee} à ${heure}:${minute}`
+
 valider.addEventListener("click", ()=> {
     infos.forEach((info) =>{
         if(info.value === ""){
@@ -98,6 +92,13 @@ valider.addEventListener("click", ()=> {
             recuRe.innerText =  "+225 0103943396";
            } else{recuRe.innerText = "0595974084"}
            
+           let temps = new Date();
+             let jour = String(temps.getDate()).padStart(2, "0")
+             let mois = String(temps.getMonth() + 1).padStart(2 ,"0")
+             let annee = String(temps.getFullYear())
+             let heure = String(temps.getHours()).padStart(2 , "0")
+             let minute = String(temps.getMinutes()).padStart(2, "0")
+             let genere = `${jour}/${mois}/${annee} à ${heure}:${minute}`
              let code = String(choixFilliere.value).slice(0 , 3)
              let wh = String(whats.value).slice(7, 10)
              let tr = String(transfert.value).slice(7, 10)
@@ -127,8 +128,8 @@ const db = getFirestore(app);
 window.enregistrer = async function() {
   await addDoc(collection(db, "contacts"), {
     nom: document.getElementById("nom").value,
-    prenom: document.getElementById("prenom").value,
     telephone: document.getElementById("telephone").value,
+    Filliere: document.getElementById("chFilliere").value,
     email: document.getElementById("email").value,
     date: new Date().toLocaleString("fr-FR")
   });
