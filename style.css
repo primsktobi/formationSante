@@ -492,7 +492,7 @@
     }
 
     .inputPayement nav input,
-    .inputPayement nav select {
+    .inputPayement nav select , .information{
         height: 44px;
         padding: 0 14px;
         border-radius: var(--radius-sm);
@@ -507,13 +507,13 @@
         appearance: none;
     }
 
-    .inputPayement nav input::placeholder {
+    .inputPayement nav input::placeholder, .information::placeholder {
         color: var(--text-muted);
         opacity: 0.5;
     }
 
     .inputPayement nav input:focus,
-    .inputPayement nav select:focus {
+    .inputPayement nav select:focus, .information:focus {
         border-color: var(--back-light);
         box-shadow: 0 0 0 3px rgba(99,102,241,0.18);
     }
@@ -531,7 +531,7 @@
     }
 
     /* Valider button */
-    .valider {
+    .valider, .divTree button {
         align-self: flex-start;
         padding: 13px 40px;
         background: linear-gradient(135deg, #22c55e, #16a34a);
@@ -550,13 +550,13 @@
         margin-left: 0;
     }
 
-    .valider:hover {
+    .valider:hover, .divTree button:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 28px rgba(34,197,94,0.45);
         animation: none;
     }
 
-    .valider:active { transform: scale(0.97); }
+    .valider:active, .divTree button:active { transform: scale(0.97); }
     .infor{
         animation: info 1s ease-in-out;
     }
@@ -835,7 +835,7 @@
             grid-template-columns: 1fr;
         }
 
-        .valider { width: 100%; text-align: center; }
+        .valider, .divTree button { width: 100%; text-align: center; }
     }
 
     @media (max-width: 480px) {
@@ -876,7 +876,69 @@
             padding: 24px 16px;
         }
         
-        .inputPayement nav input{
+        .inputPayement nav input, .inputPayement nav select ,.information{
+            width: 330px;
+        }
+        .footer-top {
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .footer-links-bottom {
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+    }
+
+    @media (max-width: 391px) {
+        body{
+            overflow-x: hidden;
+            width: 100%;
+        }
+         header {
+            padding: 0 4%;
+            width: 100%;
+            height: 70px;
+            margin: 0;
+            border-radius: none;
+            box-shadow: none;
+            
+        }
+        span.nom{
+            font-size: 20px;
+        }
+        .header-ul {
+            display: none;
+        }
+
+        .divTwo {
+            grid-template-columns: 1fr;
+        }
+
+        .objetPayement {
+            gap: 8px;
+        }
+
+        .objetPayement ul {
+            width: calc(50% - 4px);
+        }
+
+        .span2 {
+            font-size: 28px;
+        }
+
+        .divTree {
+            margin: 0 3% 30px;
+            padding: 24px 16px;
+        }
+        
+        .inputPayement nav input, .inputPayement nav select ,.information{
             width: 330px;
         }
         .footer-top {

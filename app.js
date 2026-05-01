@@ -108,8 +108,27 @@ valider.addEventListener("click", ()=> {
     
 })
 
-const btn = clas(".btn")
-supp.addEventListener("click", ()=>{
-    recu.style.display ="none"
-    
-})
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBdpj467SN0udNjyoBc4fmvl5ts4qev3W4",
+  authDomain: "primsone-01.firebaseapp.com",
+  projectId: "primsone-01",
+  storageBucket: "primsone-01.firebasestorage.app",
+  messagingSenderId: "596512957539",
+  appId: "1:596512957539:web:1dda3fa118b5c0f4a98456"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+window.enregistrer = async function() {
+  await addDoc(collection(db, "contacts"), {
+    nom: document.getElementById("nom").value,
+    prenom: document.getElementById("prenom").value,
+    telephone: document.getElementById("telephone").value,
+    email: document.getElementById("email").value
+  });
+  alert("Inscription enregistrée !");
+}
