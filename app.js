@@ -130,7 +130,7 @@ window.enregistrer = async function() {
     prenom: document.getElementById("prenom").value,
     telephone: document.getElementById("telephone").value,
     email: document.getElementById("email").value,
-    heures : genere
+    date: new Date().toLocaleString("fr-FR")
   });
   alert("Inscription enregistrée !");
 }
