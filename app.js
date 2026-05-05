@@ -1,13 +1,7 @@
 
-
-
-
-
-
-// ************ Sur phone ****************
 const clas = (nom) => document.querySelector(nom);
 const ident = (nom) => document.getElementById(nom);
-const enSavoireP = clas(".btnDivOne")
+const enSavoireP = ident("btnDivOne")
 enSavoireP.addEventListener("click", ()=> {
     if(window.innerWidth <= 480){
         window.scrollTo({
@@ -32,6 +26,12 @@ enSavoireP.addEventListener("click", ()=> {
    
 })
 
+const accueil = ident("accueil");
+const fillieres = ident("fillieres");
+const aide = ident("aide");
+const politique = ident("politique");
+
+
 const all = (nom) => document.querySelectorAll(nom);
 const transacton = all(".transaction");
 
@@ -48,7 +48,10 @@ transacton.forEach((trans)=>{
 
 const valider = clas(".valider");
 const recu = clas(".recu");
+const pourContacts = ident("pourContacts");
+const bntcontacts = ident("contactes");
 const supp = clas(".supp");
+const suppTwo = clas(".supp2");
 const infos = all(".infos");
 const nomPre = clas(".nomPre")
 const whats = clas(".whats")
@@ -106,10 +109,35 @@ valider.addEventListener("click", ()=> {
     recuId.innerText = `FS-${minute}${heure}-${code}${wh}-TR${tr}@${np}`;
            times.innerText = genere
         }
+   
+    supp.addEventListener("click", ()=>{
+        recu.style.display = "none"
+    })
     
     
 })
+ bntcontacts.addEventListener("click", ()=> {
+        
+        pourContacts.style.display ="flex"
+    })
 
+suppTwo.addEventListener("click", ()=>{
+        pourContacts.style.display = "none"
+    })
+
+ const inscription = clas(".inscription");
+ const connexion = clas(".connexion");
+ const niveauInscription = clas(".niveauInscription");
+ const niveauPaiement = clas(".niveauPaiement");
+
+ inscription.addEventListener("click", ()=> {
+    niveauInscription.style.display ="flex";
+    niveauPaiement.style.display ="none";
+ })
+ connexion.addEventListener("click", ()=> {
+     niveauInscription.style.display ="none";
+    niveauPaiement.style.display ="flex";
+ })
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
 import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
@@ -126,12 +154,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 window.enregistrer = async function() {
+    if(document.getElementById("nom").value.trim() !== "" &&
+     document.getElementById("telephone").value.trim() !=="" &&
+    document.getElementById("email").value.trim() !==""){
   await addDoc(collection(db, "contacts"), {
     nom: document.getElementById("nom").value,
-    telephone: document.getElementById("telephone").value,
+    telephone:"+225 " + document.getElementById("telephone").value,
     Filliere: document.getElementById("chFilliere").value,
     email: document.getElementById("email").value,
     date: new Date().toLocaleString("fr-FR")
   });
-  alert("Inscription enregistrée !");
-}
+  alert("Inscription enregistrée !");} else {
+    alert("Assurez-vous de remplir toutes les cases, s'il vous plaît")
+  }
+} 
