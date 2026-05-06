@@ -119,11 +119,17 @@
     inscription.addEventListener("click", () => {
         niveauInscription.style.display = "flex";
         niveauPaiement.style.display = "none";
+        if (window.innerWidth <= 480) {
+            window.scrollTo({ top: 3506, behavior: "smooth" });
+        }
     });
 
     connexion.addEventListener("click", () => {
         niveauInscription.style.display = "none";
         niveauPaiement.style.display = "flex";
+        if (window.innerWidth <= 480) {
+            window.scrollTo({ top: 3506, behavior: "smooth" });
+        }
     });
 
     // ===== FAQ  =====
