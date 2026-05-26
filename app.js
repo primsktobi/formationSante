@@ -186,7 +186,7 @@
                 });
 
                
-                await emailjs.send("service_286302a", "template_etxlw7f", {
+                await emailjs.send("service_x550dia", "template_ocs4d3o", {
                     nom: nom,
                     telephone: "+225 " + telephone,
                     filliere: filliere,
